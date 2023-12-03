@@ -1,83 +1,38 @@
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.ArrayList;
 
 public class Jogo {
 
     public static void main(String[] args) {
-        Baralho baralho = new Baralho();
-        baralho.inicializarBaralho();
-        baralho.embaralharCartas();
-       
+
+        Scanner in = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("==============================");
+            System.out.println(" SUPER JOGO DE CARTAS");
+            System.out.println("==============================\n");
+            System.out.println("OPÇOES:");
+            System.out.println(" 1 - Jogar");
+            // System.out.println(" 2 - Ranking");
+            System.out.println(" 3 - Sair");
+
+            System.out.print("\nDigite uma opção:");
+            opcao = in.nextInt();
+            switch (opcao) {
+                case 1:
+                    Tabuleiro tabuleiro = new Tabuleiro();
+                    break;
+                // case 2:
+                //     // exibirRanking();
+                //     break;
+            }
+        } while (opcao != 3);
+
+        System.out.println("\n[ PROGRAMA ENCERRADO ]");
+        System.exit(0);
     }
-        // Baralho baralho = new Baralho();
-        // baralho.inicializarBaralho();
-        // baralho.embaralharCartas();
-        // baralho.listarCompacto();
-        // System.out.println(baralho.getSize());
-        // carta = baralho.comprarCarta();
-        // System.out.println(carta.toString());
-        // System.out.println(baralho.getSize());
-        // carta = baralho.comprarCarta();
-        // System.out.println(carta.toString());
-        // System.out.println(baralho.getSize());
-
-        // carta = [1,5,67,19,20,55,20];
-
-
-
-
-        // Scanner in = new Scanner(System.in);
-
-    //     int opcao;
-
-    //     do {
-    //         System.out.println("==============================");
-    //         System.out.println(" SUPER TRUNFO");
-    //         System.out.println("==============================\n");
-    //         System.out.println("OPÇOES:");
-    //         System.out.println(" 1 - Jogar");
-    //         // System.out.println(" 2 - Ranking");
-    //         System.out.println(" 3 - Sair");
-
-    //         System.out.print("\nDigite uma opção:");
-    //         opcao = in.nextInt();
-    //         switch (opcao) {
-    //             case 1:
-    //                 Jogar();
-    //                 break;
-    //             // case 2:
-    //             //     // exibirRanking();
-    //             //     break;
-    //         }
-    //     } while (opcao != 3);
-
-    //     System.out.println("\n[ PROGRAMA ENCERRADO ]");
-    //     System.exit(0);
-    // }
-
-    // private static void Jogar() {
-    //     Scanner in = new Scanner(System.in);
-    //     int opcao, rodada;
-    //     Carta carta;
-    //     // Jogador jogador;
-
-    //     System.out.println("\n------------------------------");
-    //     System.out.println(" JOGAR ");
-
-    //     // Cria o Baralho
-    //     Baralho baralho = new Baralho();
-    //     baralho.inicializarBaralho();
-    //     baralho.embaralharCartas();
-
-    //     // Cria os Jogadores
-    //     Jogadores jogadores = new Jogadores();
-
-    //     // Distribui as Cartas para os Jogadores();
-    //     jogadores.darCartas(baralho);
-
-    //     System.out.println("\n##############################");
-    //     System.out.println(" PARTIDA INICIADA");
-    //     System.out.println("##############################");
 
     //     rodada = 1;
     //     jogador = jogadores.getJogadorByIndex(0);
@@ -142,4 +97,3 @@ public class Jogo {
     //     ranking.exibir();
     // }
     }
-}

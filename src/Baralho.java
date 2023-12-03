@@ -1,48 +1,66 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
 class Baralho {
-    private Stack<Carta> pilhaDeCartas;
+    private ArrayList<Carta> cartas;
 
     public Baralho() {
-        pilhaDeCartas = new Stack<>();
+        cartas = new ArrayList<>();
         inicializarBaralho();
         embaralharCartas();
     }
 
     public void inicializarBaralho() {
         for (int numero = 1; numero <= 109; numero++) {
-            pilhaDeCartas.push(new Carta(numero));
+            cartas.add(new Carta(numero));
         }
-        listarCompacto();
-
-        
     }
 
     public void embaralharCartas() {
-        Collections.shuffle(pilhaDeCartas);
+        Collections.shuffle(cartas);
     }
 
-    // public Carta comprarCarta() {
-    //     if (!pilhaDeCartas.isEmpty()) {
-    //         return pilhaDeCartas.pop();
-    //     } else {
-    //         System.out.println("O baralho está vazio!");
-    //         return null;
-    //     }
-    // }
-    public int getSize() {
-        return pilhaDeCartas.size();
+    public void listar() {
+        for (Carta carta : cartas) {
+            System.out.println(carta.printCard());
+        }
     }
 
-    // public void listarCompacto() { // Só pra debug
-    //     Carta carta;
-    //     for (int i = 0; i < pilhaDeCartas.size(); i++) {
-    //         carta = pilhaDeCartas.get(i);
-    //         int baralho = carta.getNumero();
+    public Carta comprarCarta() {
+        if (!getCartas().isEmpty()) {
+            return getCartas().remove(0);
+        } else {
+            System.out.println("O baralho está vazio!");
+            return null;
+        }
+    }
 
-    //     }
-    //     System.out.println("Carta: " + carta);
-    // }
+    public int getSizeBaralho() {
+        return cartas.size();
+    }
+
+    public ArrayList<Carta> getPilhaDeCartas() {
+        return cartas;
+    }
+
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
+
+    public void setCartas(ArrayList<Carta> cartas) {
+        this.cartas = cartas;
+    }
     
+    //utilizado para debugar
+    // public static void mostrarBaralho(Baralho baralho) {
+    //     Stack<Carta> copiaDoBaralho = new Stack<>();
+    //     copiaDoBaralho.addAll(baralho.getPilhaDeCartas());
+
+    //     System.out.println("Cartas no baralho:");
+    //     while (!copiaDoBaralho.isEmpty()) {
+    //         Carta carta = copiaDoBaralho.pop();
+    //         System.out.println(carta.printCard());
+    //     }
+    // }
 }

@@ -7,7 +7,6 @@ public class Carta {
         this.pontos = calcularPontos();
     }
 
-
     public int getNumero() {
         return numero;
     }
@@ -42,5 +41,7 @@ public class Carta {
         return numeroStr.length() == 2 && numeroStr.charAt(0) == numeroStr.charAt(1);
     }
 
-    
+    public String printCard(){
+        return "[Nº " + this.numero + " - p " + this.pontos + "] ";
+    }
 }
