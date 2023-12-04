@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Jogo {
 
@@ -54,7 +53,7 @@ public class Jogo {
             }
             System.out.println();
 
-            // insertCards(tabuleiro, cartasDaRodada);
+            // criar uma função pra inserir as cartas
 
             tabuleiro.mostrarEstadoAtual();
 
@@ -62,8 +61,6 @@ public class Jogo {
 
             scanner.nextLine();
         }
-
-        
     }
 
     private static void limparTela() {

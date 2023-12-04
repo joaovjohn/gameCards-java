@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
 public class Tabuleiro {
     private ArrayList<Jogador> jogadores = new ArrayList<>();
@@ -24,6 +22,24 @@ public class Tabuleiro {
         }
     }
 
+    public static void mostrarTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
+        for (LinkedList<Carta> linha : tabuleiro) {
+            for (Carta carta : linha) {
+                System.out.printf("[%3d] ", carta.getNumero());
+            }
+
+            for (int i = 0; i < 5 - linha.size(); i++) {
+                System.out.print("[   ] ");
+            }
+            System.out.println("{   }");
+        }
+        System.out.println();
+    }
+
+    public ArrayList<Jogador> getJogadores() {
+        return jogadores;
+    }
+   
     private static void mostrarTudoJogador(Jogador jogador) { // utilizado para mostrar estado atual do jogo
         System.out.println("\nJogador: " + jogador.getNome());
         System.out.println("Cartas do jogador: ");
@@ -82,31 +98,5 @@ public class Tabuleiro {
             tabuleiro.get(i).addLast(baralho.comprarCarta());
         }
         System.err.println();
-    }
-
-    public static void mostrarTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
-        for (LinkedList<Carta> linha : tabuleiro) {
-            for (Carta carta : linha) {
-                System.out.printf("[%3d] ", carta.getNumero());
-            }
-
-            for (int i = 0; i < 5 - linha.size(); i++) {
-                System.out.print("[   ] ");
-            }
-            System.out.println("{   }");
-        }
-        System.out.println();
-    }
-
-    public ArrayList<Jogador> getJogadores() {
-        return jogadores;
-    }
-
-    public Jogador getJogadorByIndex(int index) {
-        return jogadores.get(index);
-    }
-    
-    public int getSizeJogadores() {
-        return this.jogadores.size();
     }
 }
