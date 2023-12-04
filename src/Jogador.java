@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import javax.smartcardio.Card;
-
 public class Jogador {
     private String nome;
     private ArrayList<Carta> cartas = new ArrayList<>();
@@ -53,7 +51,7 @@ public class Jogador {
     public String printHand(){
         String res = "";
         for (Carta carta : cartas) {
-            res += carta.getNumero() + " ";
+            res += carta.printCard();
         }
         return res;
     }

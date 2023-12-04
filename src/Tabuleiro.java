@@ -12,6 +12,10 @@ public class Tabuleiro {
     public Tabuleiro() {
         configurarJogo();
     }
+    
+    public ArrayList<LinkedList<Carta>> getTabuleiro() {
+        return tabuleiro;
+    }
 
     public void mostrarEstadoAtual() {
         System.out.println("\nEstado Atual do Tabuleiro:");
