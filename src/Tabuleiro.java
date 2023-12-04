@@ -11,7 +11,6 @@ public class Tabuleiro {
 
     public Tabuleiro() {
         configurarJogo();
-        mostrarTabuleiro(tabuleiro);
     }
 
     public void mostrarEstadoAtual() {
@@ -79,9 +78,9 @@ public class Tabuleiro {
             tabuleiro.get(i).addLast(baralho.comprarCarta());
         }
         System.err.println();
-    }   
+    }
 
-    private static void mostrarTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
+    public static void mostrarTabuleiro(ArrayList<LinkedList<Carta>> tabuleiro) {
         for (LinkedList<Carta> linha : tabuleiro) {
             for (Carta carta : linha) {
                 System.out.printf("[%3d] ", carta.getNumero());
@@ -93,6 +92,10 @@ public class Tabuleiro {
             System.out.println("{   }");
         }
         System.out.println();
+    }
+
+    public ArrayList<Jogador> getJogadores() {
+        return jogadores;
     }
 
     public Jogador getJogadorByIndex(int index) {

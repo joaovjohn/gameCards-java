@@ -1,4 +1,4 @@
-public class Carta {
+public class Carta implements Comparable<Carta>{
     private int numero;
     private int pontos;
 
@@ -43,5 +43,10 @@ public class Carta {
 
     public String printCard(){
         return "[Nº " + this.numero + " - p " + this.pontos + "] ";
+    }
+
+    @Override
+    public int compareTo(Carta outraCarta) {
+        return this.numero - outraCarta.numero;
     }
 }
