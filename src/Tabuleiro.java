@@ -42,24 +42,15 @@ public class Tabuleiro {
    
     private static void mostrarTudoJogador(Jogador jogador) { // utilizado para mostrar estado atual do jogo
         System.out.println("\nJogador: " + jogador.getNome());
-        System.out.println("Cartas do jogador: ");
-        if (!jogador.getCartas().isEmpty()) {
-            for (Carta carta : jogador.getCartas()) {
-                System.out.print(carta.printCard());
-            }
-        } else {
-            System.out.println("Sem cartas na mão vazia!");
-        }
-
-        System.out.print("\nCartas compradas: ");
+        System.out.printf("Cartas compradas: ");
         if (!jogador.getCompradas().isEmpty()) {
             for (Carta comprada : jogador.getCompradas()) {
                 System.out.printf("|%d", comprada.getNumero());
             }
         } else {
-            System.out.println("Nenhuma carta comprada!");
+            System.out.print("Nenhuma carta comprada!");
         }
-        System.out.println("Pontos: " + jogador.getPontos());
+        System.out.println("\nPontos: " + jogador.getPontos());
     }
 
     private void configurarJogo() {

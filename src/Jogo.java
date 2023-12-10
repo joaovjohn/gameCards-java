@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Jogo {
@@ -33,33 +34,89 @@ public class Jogo {
 
             Tabuleiro.mostrarTabuleiro(tabuleiro.getTabuleiro());
 
-            ArrayList<Carta> cartasDaRodada = new ArrayList<Carta>();
-
             System.out.println();
 
             for (Jogador jogador : tabuleiro.getJogadores()) {
                 System.out.println("Mão do jogador " + jogador.getNome() + ": ");
                 System.out.println(jogador.printHand());
-                int indexOfCard = escolherCartaJogar(jogador.getCartas(), scanner);
-                cartasDaRodada.add(jogador.getCartas().remove(indexOfCard));
+                int index = escolherCartaJogar(jogador.getCartas(), scanner);
+                jogador.setCartaJogada(jogador.getCartas().get(index));
+                jogador.getCartas().remove(index);
             }
 
-            Collections.sort(cartasDaRodada);
+            Collections.sort(tabuleiro.getJogadores());
             System.out.println();
 
             System.out.println("Cartas jogadas essa rodada: ");
-            for (Carta carta : cartasDaRodada) {
-                System.out.print(carta.getNumero() + " ");
+            for (Jogador j : tabuleiro.getJogadores()) {
+                System.out.print(j.getCartaJogada().getNumero() + " ");
             }
+
             System.out.println();
 
-            // criar uma função pra inserir as cartas
+            for(Jogador j : tabuleiro.getJogadores()){
+                inserirCartas(tabuleiro.getTabuleiro(), j);
+            }
 
             tabuleiro.mostrarEstadoAtual();
 
             System.out.println("Pressione enter para continuar");
 
             scanner.nextLine();
+        }
+
+        ganhador(tabuleiro.getJogadores());
+    }
+
+    private static void ganhador(ArrayList<Jogador> jogadores) {
+        int menor = 0;
+        Jogador ganhador = null;
+        for (Jogador jogador : jogadores) {
+            if(jogador.getPontos() < menor){
+                menor = jogador.getPontos();
+                ganhador = jogador;
+            }
+            if(ganhador == null){
+                System.out.println("Empate");
+                return;
+            }
+        }
+        System.out.println("O ganhador é " + ganhador.getNome() + " com " + ganhador.getPontos() + " pontos");
+    }
+
+    private static void inserirCartas(ArrayList<LinkedList<Carta>> tabuleiro, Jogador jogador) {
+        int anterior = 0;
+        int index = -1;
+        int maior = 0;
+        int indexMaior = -1;
+        Carta cartaAtual = jogador.getCartaJogada();
+        for (int i = 0; i < tabuleiro.size(); i++) {
+            LinkedList<Carta> linha = tabuleiro.get(i);
+            if(linha.getLast().getNumero() > anterior && linha.getLast().getNumero() < cartaAtual.getNumero()){
+                anterior = linha.getLast().getNumero();
+                index = i;
+            } else if(linha.getLast().getNumero() > maior){
+                maior = linha.getLast().getNumero();
+                indexMaior = i;
+            }
+        }
+
+        if(index != -1){
+            if(tabuleiro.get(index).size() == 5){
+                jogador.setCompradas(tabuleiro.get(index));
+                for(Carta c : jogador.getCompradas()){
+                    jogador.setPontos(jogador.getPontos()+c.getPontos());
+                }
+                tabuleiro.get(index).clear();
+            }
+            tabuleiro.get(index).addLast(cartaAtual);
+        } else {
+            jogador.setCompradas(tabuleiro.get(indexMaior));
+            for(Carta c : jogador.getCompradas()){
+                    jogador.setPontos(jogador.getPontos()+c.getPontos());
+                }
+            tabuleiro.get(indexMaior).clear();
+            tabuleiro.get(indexMaior).addLast(cartaAtual);
         }
     }
 

@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class Jogador {
+public class Jogador implements Comparable<Jogador> {
     private String nome;
     private ArrayList<Carta> cartas = new ArrayList<>();
     private int pontos;
-    private ArrayList<Carta> compradas;
+    private LinkedList<Carta> compradas;
+    private Carta cartaJogada;
+    
 
 
     public Jogador(String nome, Baralho baralho) {
@@ -13,11 +16,19 @@ public class Jogador {
             cartas.add(baralho.comprarCarta());
         }
         this.pontos = 0;
-        this.compradas = new ArrayList<Carta>(); // monte de cartas que comprou 
+        this.compradas = new LinkedList<Carta>(); // monte de cartas que comprou 
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public Carta getCartaJogada() {
+        return cartaJogada;
+    }
+
+    public void setCartaJogada(Carta cartaJogada) {
+        this.cartaJogada = cartaJogada;
     }
 
     public ArrayList<Carta> getCartas() {
@@ -44,7 +55,7 @@ public class Jogador {
         this.pontos = pontos;
     }
 
-    public ArrayList<Carta> getCompradas() {
+    public LinkedList<Carta> getCompradas() {
         return compradas;
     }
 
@@ -56,7 +67,12 @@ public class Jogador {
         return res;
     }
 
-    public void setCompradas(ArrayList<Carta> compradas) {
-        this.compradas = compradas;
+    public void setCompradas(LinkedList<Carta> compradas) {
+        this.compradas.addAll(compradas);
+    }
+
+    @Override
+    public int compareTo(Jogador o) {
+        return this.getCartaJogada().getNumero() - o.getCartaJogada().getNumero();
     }
 }
