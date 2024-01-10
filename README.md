@@ -1,5 +1,4 @@
-Este jogo foi implementado como trabalho final de Programação 1 do Curso de Ciência da Computação na UFFS (Universidade Federal da Fronteira Sul)
-Foi implementado de forma individual com foco nos ensinamentos da programação em objetos.
+Este jogo foi implementado como trabalho final de Programação 1 do Curso de Ciência da Computação na UFFS (Universidade Federal da Fronteira Sul), foi implementado de forma individual com foco nos ensinamentos da programação em objetos.
 
 Regras e componentes do jogo de cartas a ser implementado:
 1) O jogo possui 109 cartas numeradas de 1 a 109.
